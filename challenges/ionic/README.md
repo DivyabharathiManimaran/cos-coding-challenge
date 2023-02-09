@@ -36,8 +36,8 @@ Run `ionic generate component component-name` to generate a new component. You c
 Run `ionic build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Simulate
-Run `npx cap add android` and `npx cap add ios` to build native platforms.
-Run `cordova-res ios --skip-config --copy` and `cordova-res android --skip-config --copy` to copy resource files to platform projects.
+Run `npx cap add android` and `npx cap add ios` to build native platforms.        
+Run `cordova-res ios --skip-config --copy` and `cordova-res android --skip-config --copy` to copy resource files to platform projects.      
 Run `npx cap sync` to update projects.
 
 ## Running unit tests
