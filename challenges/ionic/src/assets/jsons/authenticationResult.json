@@ -1,0 +1,9 @@
+{
+    "token": "TOKEN",
+    "authenticated": true,
+    "userId": "testuser@test.de",
+    "internalUserId": 1234,
+    "internalUserUUID": "054d4577-69a0-4e4b-8e5e-975bcf8c62c7",
+    "type": 1,
+    "privileges": "{SALESMAN_USER}"
+}

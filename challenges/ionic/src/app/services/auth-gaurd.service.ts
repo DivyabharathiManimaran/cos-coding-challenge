@@ -7,9 +7,9 @@ import { CanActivate } from '@angular/router';
 })
 export class AuthGaurdService implements CanActivate {
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   canActivate(): boolean {
-    return this.authService.isAuthenticated();
+    return this.authenticationService.isAuthenticated();
   }
 }

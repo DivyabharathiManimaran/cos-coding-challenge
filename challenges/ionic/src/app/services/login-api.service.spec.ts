@@ -6,30 +6,23 @@ import { HttpClient } from '@angular/common/http';
 
 describe('LoginApiService', () => {
   let loginApiService: LoginApiService;
-  let http: HttpClient;
-  let httpController: HttpTestingController;
-  let authenticationService: AuthenticationService;
+  let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [LoginApiService, AuthenticationService],
-    });
-    loginApiService = TestBed.inject(LoginApiService);
-    http = TestBed.inject(HttpClient);
-    httpController = TestBed.inject(HttpTestingController);
-    authenticationService = TestBed.inject(AuthenticationService);
-  });
-
-  it('login API service to be defined', () => {
-    expect(loginApiService).toBeDefined();
-  });
-
-  it('authentication service to be defined', () => {
-    expect(authenticationService).toBeDefined();
+    const authenticationServiceSpy =
+      jasmine.createSpyObj<AuthenticationService>(["getHttpOptions"]);
+    httpClientSpy = jasmine.createSpyObj("HttpClient", ["put"]);
+    loginApiService = new LoginApiService(
+      httpClientSpy,
+      authenticationServiceSpy
+    );
   });
 
   it('should be created', () => {
     expect(loginApiService).toBeTruthy();
+  });
+
+  it('should check for valid user', () => {
+    expect(loginApiService.isValidUser).toBeTruthy();
   });
 });

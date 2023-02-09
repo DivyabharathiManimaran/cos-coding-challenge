@@ -11,7 +11,7 @@ export class ErrorComponent implements OnInit, OnDestroy {
   @Input() errorMessage?: string;
   somethinWentWrong = "ERRORS.something_went_wrong";
 
-  msgSubscription!: Subscription;
+  msgSubscription?: Subscription;
 
   constructor(private translateService: TranslateService) {}
 
@@ -27,6 +27,6 @@ export class ErrorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.msgSubscription.unsubscribe();
+    this.msgSubscription?.unsubscribe();
   }
 }

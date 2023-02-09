@@ -20,5 +20,6 @@ describe('LoadingCardsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.fakeAuctions).toEqual(['', '', '', '', '', '', '', '', '', '', '', '']);
   });
 });

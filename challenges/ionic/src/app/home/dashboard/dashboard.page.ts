@@ -27,9 +27,9 @@ export class DashboardPage implements OnDestroy, OnInit {
   fueltype = FuelType;
   transmission = Transmission;
 
-  auctionSubscription!: Subscription;
-  refreshSubscription!: Subscription;
-  msgSubscription!: Subscription;
+  auctionSubscription?: Subscription;
+  refreshSubscription?: Subscription;
+  msgSubscription?: Subscription;
 
   constructor(
     private auctionService: AuctionService,
@@ -116,8 +116,8 @@ export class DashboardPage implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    this.auctionSubscription.unsubscribe();
-    this.refreshSubscription.unsubscribe();
-    this.msgSubscription.unsubscribe();
+    this.auctionSubscription?.unsubscribe();
+    this.refreshSubscription?.unsubscribe();
+    this.msgSubscription?.unsubscribe();
   }
 }

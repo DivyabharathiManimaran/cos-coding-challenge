@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   passwordToggleIcon = "eye"
   notAuthenticatedErr = 'ERRORS.invalid_credentials';
   somethingWentWrongErr = 'ERRORS.something_went_wrong';
-  msgSubscription!: Subscription;
+  msgSubscription?: Subscription;
   @ViewChild('emailControl') emailControl!: HTMLIonInputElement;
   @ViewChild('passwordControl') passwordControl!: HTMLIonInputElement;
 
@@ -104,6 +104,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.msgSubscription.unsubscribe();
+    this.msgSubscription?.unsubscribe();
   }
 }

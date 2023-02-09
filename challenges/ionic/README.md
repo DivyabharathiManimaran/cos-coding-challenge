@@ -15,7 +15,7 @@ The application
 - Uses Behavior subjects to detect any change in the authentication state.
 - The application is available in TWO languages (Deutsch and English).
 - Is built to be responsive across multiple mobile and tablet devices.
-- Includes necessary test cases.
+- Includes necessary test cases with 60% coverage.
 
 ## Project
 

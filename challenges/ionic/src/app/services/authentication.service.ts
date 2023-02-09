@@ -21,7 +21,7 @@ export class AuthenticationService {
     });
    }
 
-   /** Headers for URLs which dont need autherisation */
+   /** Headers for URLs which dont need authorisation */
    getHttpOptions() {
     const myHttpOptions = {
       headers: new HttpHeaders({
@@ -32,7 +32,7 @@ export class AuthenticationService {
   }
 
 
-   /** Headers for URLs which need autherisation */
+   /** Headers for URLs which need authorisation */
    getAuthorisedHttpOptions() {
     const myHttpOptions = {
       headers: new HttpHeaders({
@@ -44,7 +44,7 @@ export class AuthenticationService {
     return myHttpOptions;
   }
   
-  /** Login and set autherisation state */
+  /** Login and set authorisation state */
   login(userId:string, authtokenVal: string) {
     this.logedInUserId = userId;
     this.authKey = authtokenVal;
