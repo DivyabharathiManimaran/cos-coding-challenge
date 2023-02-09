@@ -15,7 +15,7 @@ The application
 - Uses Behavior subjects to detect any change in the authentication state.
 - The application is available in TWO languages (Deutsch and English).
 - Is built to be responsive across multiple mobile and tablet devices.
-- Includes necessary test cases with nearly 70% coverage.
+- Includes necessary test cases.
 
 ## Project
 
@@ -34,6 +34,11 @@ Run `ionic generate component component-name` to generate a new component. You c
 ## Build
 
 Run `ionic build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Simulate
+Run `npx cap add android` and `npx cap add ios` to build native platforms.
+Run `cordova-res ios --skip-config --copy` and `cordova-res android --skip-config --copy` to copy resource files to platform projects.
+Run `npx cap sync` to update projects.
 
 ## Running unit tests
 
