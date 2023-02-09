@@ -26,26 +26,53 @@
   text-decoration: none;
 }
 
+.header-content {
+  font-family:  'Anek Bangla';
+}
+
 .dashboard-content {
   background-color: gainsboro;
-  height: 100%;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.row-padding {
+  padding: 16px 0 0 0;
+}
+
+.special-chips {
+  place-content: center;
+  ion-chip {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Anek Bangla';
+  }
 }
 .highest-bid-chip {
   background-color: #f3bf45;
-  margin-left: 0;
 }
 
 .item-card {
   border-radius: 25px;
   font-size: 20px;
   font-family: Tahoma;
+  background: aliceblue;
 }
 
 .label-val {
   font-weight: 700;
 }
 
-.no-margin {
-  margin: 0;
+.content-chip {
+  width: 100%;
+  margin: 8px 0 0 0;
+  background: white;
+  place-content: space-between;
+  font-size: 15px;
 }
 
+.error-container {
+  height: 100%;
+}

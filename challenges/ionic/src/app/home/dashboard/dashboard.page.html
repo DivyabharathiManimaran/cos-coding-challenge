@@ -1,12 +1,12 @@
 <ion-content class="dashboard-content" [fullscreen]="true">
   <ion-list class="dashboard-content" *ngIf="loaded && !cannotFindResults">
     <ion-card class="item-card" *ngFor="let item of buyerAuctionList">
-      <ion-card-header>
+      <ion-card-header class="header-content">
         <ion-card-title>{{ item.label }}</ion-card-title>
       </ion-card-header>
     
       <ion-card-content>
-        <ion-col>
+        <ion-col class="no-padding">
           <ion-row>
             <ion-slides pager="true" [options]="slideOpts">
               <ion-slide  *ngFor="let vehicle of item.vehicleImages">
@@ -14,8 +14,9 @@
               </ion-slide>
             </ion-slides>
           </ion-row>
-          <ion-grid> 
-            <ion-chip class="no-margin">
+
+          <ion-row class="row-padding special-chips">
+            <ion-chip>
               <ion-icon name="timer" color="dark"></ion-icon>
               <ion-label>{{ 5 * item.remainingTimeInSeconds | date:'H:mm:ss':'UTC'  }}</ion-label>
             </ion-chip>
@@ -24,13 +25,30 @@
               <ion-icon name="ribbon" color="tertiary"></ion-icon>
               <ion-label>{{'DASHBOARD.highest_bidder' | translate}}</ion-label>
             </ion-chip>
-            <div><span class="label">{{'DASHBOARD.highest_bid_label' | translate}} </span><span class="label-val">{{ item.currentHighestBidValue }}</span></div>
-            <div><span class="label">{{'DASHBOARD.ez_label' | translate}} </span><span class="label-val">{{ item.ez }}</span></div>
-            <div><span class="label">{{'DASHBOARD.transmission_label' | translate}}</span><span class="label-val">{{ transmission[item.transmission] }}</span></div>
-            <div><span class="label">{{'DASHBOARD.fuel_type_label' | translate}}</span><span class="label-val">{{ fueltype[item.fuelType] }}</span></div>
-            <div><span class="label">{{'DASHBOARD.mileage_label' | translate}}</span><span class="label-val">{{ item.mileageInKm }} {{'DASHBOARD.kms_unit' | translate}}</span></div>
+          </ion-row>
 
-          </ion-grid>
+          <ion-row class="row-padding">
+            <ion-chip class="content-chip">
+              <span class="label">{{'DASHBOARD.highest_bid_label' | translate}} </span>
+              <span class="label-val">{{ item.currentHighestBidValue }}</span> 
+            </ion-chip>
+            <ion-chip class="content-chip">
+              <span class="label">{{'DASHBOARD.ez_label' | translate}} </span>
+              <span class="label-val">{{ item.ez }}</span>
+            </ion-chip>
+            <ion-chip class="content-chip">
+              <span class="label">{{'DASHBOARD.transmission_label' | translate}}</span>
+              <span class="label-val">{{ transmission[item.transmission] }}</span>
+            </ion-chip>
+            <ion-chip class="content-chip">
+              <span class="label">{{'DASHBOARD.fuel_type_label' | translate}}</span>
+              <span class="label-val">{{ fueltype[item.fuelType] }}</span> 
+            </ion-chip>
+            <ion-chip class="content-chip">
+              <span class="label">{{'DASHBOARD.mileage_label' | translate}}</span>
+              <span class="label-val">{{ item.mileageInKm }} {{'DASHBOARD.kms_unit' | translate}}</span>
+            </ion-chip>
+          </ion-row>
         </ion-col>
       </ion-card-content>
     </ion-card>
