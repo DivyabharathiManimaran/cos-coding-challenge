@@ -18,8 +18,7 @@ export class DashboardPage implements OnDestroy, OnInit {
   cannotFindResults = false;
   buyerAuctionList: BuyerAuctionDisplayModel[] = [];
   buyerAuctionResp!: BuyerAuctionsResponse;
-  fakeAuctions = ['', '', '', '', '', '', '', '', '', '', '', ''];
-  slideOpts = {
+   slideOpts = {
     initialSlide: 1,
     speed: 400
   };
@@ -39,7 +38,7 @@ export class DashboardPage implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.getAuction();
-    // this.refreshData(); 
+    this.refreshData(); 
   }
   ionViewDidEnter(){
     this.routerOutlet.swipeGesture = false;
@@ -48,6 +47,7 @@ export class DashboardPage implements OnDestroy, OnInit {
     this.auctionSubscription = this.auctionService.getAuctionsForBuyer().subscribe((resp: BuyerAuctionsResponse) => {
       if(resp && resp.items) {
         this.buyerAuctionResp = resp;
+        this.cannotFindResults = false;
         resp.items.forEach((item, ind, arr) => {
           this.buyerAuctionList.push(this.buildData(item));
           if(ind === arr.length - 1) {

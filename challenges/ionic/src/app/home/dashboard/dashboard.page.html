@@ -1,5 +1,5 @@
 <ion-content class="dashboard-content" [fullscreen]="true">
-  <ion-list class="dashboard-content" *ngIf="loaded">
+  <ion-list class="dashboard-content" *ngIf="loaded && !cannotFindResults">
     <ion-card class="item-card" *ngFor="let item of buyerAuctionList">
       <ion-card-header>
         <ion-card-title>{{ item.label }}</ion-card-title>
@@ -36,31 +36,11 @@
     </ion-card>
   </ion-list>
   
-  <ion-list class="dashboard-content" *ngIf="!loaded">
-    <ion-card class="item-card" *ngFor="let i of fakeAuctions">
-      <ion-card-content>
-        <ion-col>
-          <ion-row>
-            <ion-thumbnail style="width: 100%; height: 100px;">
-              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
-            </ion-thumbnail>
-          </ion-row>
-          <ion-grid>
-            
-            <div><ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text></div>
-            <div><ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text></div>
-            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
-            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
-            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
-
-          </ion-grid>
-        </ion-col>
-      </ion-card-content>
-    </ion-card>
+  <ion-list class="dashboard-content" *ngIf="!loaded && !cannotFindResults">
+    <app-loading-cards></app-loading-cards>
   </ion-list>
 
   <div *ngIf="cannotFindResults" class="dashboard-content error-container">
-    <ion-icon name="sad" color="dark"></ion-icon>
-    {{ errorMessage }}
+    <app-error [errorMessage]="errorMessage"></app-error>
   </div>
 </ion-content>

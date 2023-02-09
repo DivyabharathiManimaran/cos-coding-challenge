@@ -1,0 +1,16 @@
+.error-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    font-size: 20px;
+    place-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: gainsboro;
+    ion-icon {
+      width: 25%;
+      height: 25%;
+    }
+  }
