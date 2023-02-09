@@ -1,0 +1,66 @@
+<ion-content class="dashboard-content" [fullscreen]="true">
+  <ion-list class="dashboard-content" *ngIf="loaded">
+    <ion-card class="item-card" *ngFor="let item of buyerAuctionList">
+      <ion-card-header>
+        <ion-card-title>{{ item.label }}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-col>
+          <ion-row>
+            <ion-slides pager="true" [options]="slideOpts">
+              <ion-slide  *ngFor="let vehicle of item.vehicleImages">
+                <img [alt]="item.label" [src]="vehicle.url" onerror="this.src='../../../assets/images/car-placeholder.jpeg'" />
+              </ion-slide>
+            </ion-slides>
+          </ion-row>
+          <ion-grid> 
+            <ion-chip class="no-margin">
+              <ion-icon name="timer" color="dark"></ion-icon>
+              <ion-label>{{ 5 * item.remainingTimeInSeconds | date:'H:mm:ss':'UTC'  }}</ion-label>
+            </ion-chip>
+
+            <ion-chip *ngIf="item.amIHighestBidder" class="highest-bid-chip">
+              <ion-icon name="ribbon" color="tertiary"></ion-icon>
+              <ion-label>{{'DASHBOARD.highest_bidder' | translate}}</ion-label>
+            </ion-chip>
+            <div><span class="label">{{'DASHBOARD.highest_bid_label' | translate}} </span><span class="label-val">{{ item.currentHighestBidValue }}</span></div>
+            <div><span class="label">{{'DASHBOARD.ez_label' | translate}} </span><span class="label-val">{{ item.ez }}</span></div>
+            <div><span class="label">{{'DASHBOARD.transmission_label' | translate}}</span><span class="label-val">{{ transmission[item.transmission] }}</span></div>
+            <div><span class="label">{{'DASHBOARD.fuel_type_label' | translate}}</span><span class="label-val">{{ fueltype[item.fuelType] }}</span></div>
+            <div><span class="label">{{'DASHBOARD.mileage_label' | translate}}</span><span class="label-val">{{ item.mileageInKm }} {{'DASHBOARD.kms_unit' | translate}}</span></div>
+
+          </ion-grid>
+        </ion-col>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  
+  <ion-list class="dashboard-content" *ngIf="!loaded">
+    <ion-card class="item-card" *ngFor="let i of fakeAuctions">
+      <ion-card-content>
+        <ion-col>
+          <ion-row>
+            <ion-thumbnail style="width: 100%; height: 100px;">
+              <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            </ion-thumbnail>
+          </ion-row>
+          <ion-grid>
+            
+            <div><ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text></div>
+            <div><ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text></div>
+            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
+            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
+            <div><ion-skeleton-text [animated]="true" style="width: 40%;"></ion-skeleton-text></div>
+
+          </ion-grid>
+        </ion-col>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <div *ngIf="cannotFindResults" class="dashboard-content error-container">
+    <ion-icon name="sad" color="dark"></ion-icon>
+    {{ errorMessage }}
+  </div>
+</ion-content>
