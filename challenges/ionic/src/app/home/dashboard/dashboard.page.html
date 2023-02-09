@@ -1,16 +1,21 @@
 <ion-content class="dashboard-content" [fullscreen]="true">
+  <!-- Dashboard content -->
   <ion-list class="dashboard-content" *ngIf="loaded && !cannotFindResults">
     <ion-card class="item-card" *ngFor="let item of buyerAuctionList">
       <ion-card-header class="header-content">
         <ion-card-title>{{ item.label }}</ion-card-title>
       </ion-card-header>
-    
+
       <ion-card-content>
         <ion-col class="no-padding">
           <ion-row>
             <ion-slides pager="true" [options]="slideOpts">
-              <ion-slide  *ngFor="let vehicle of item.vehicleImages">
-                <img [alt]="item.label" [src]="vehicle.url" onerror="this.src='../../../assets/images/car-placeholder.jpeg'" />
+              <ion-slide *ngFor="let vehicle of item.vehicleImages">
+                <img
+                  [alt]="item.label"
+                  [src]="vehicle.url"
+                  onerror="this.src='../../../assets/images/car-placeholder.jpeg'"
+                />
               </ion-slide>
             </ion-slides>
           </ion-row>
@@ -18,7 +23,10 @@
           <ion-row class="row-padding special-chips">
             <ion-chip>
               <ion-icon name="timer" color="dark"></ion-icon>
-              <ion-label>{{ 5 * item.remainingTimeInSeconds | date:'H:mm:ss':'UTC'  }}</ion-label>
+              <ion-label
+                >{{ 5 * item.remainingTimeInSeconds | date:'H:mm:ss':'UTC'
+                }}</ion-label
+              >
             </ion-chip>
 
             <ion-chip *ngIf="item.amIHighestBidder" class="highest-bid-chip">
@@ -29,35 +37,50 @@
 
           <ion-row class="row-padding">
             <ion-chip class="content-chip">
-              <span class="label">{{'DASHBOARD.highest_bid_label' | translate}} </span>
-              <span class="label-val">{{ item.currentHighestBidValue }}</span> 
+              <span class="label"
+                >{{'DASHBOARD.highest_bid_label' | translate}}
+              </span>
+              <span class="label-val">{{ item.currentHighestBidValue }}</span>
             </ion-chip>
             <ion-chip class="content-chip">
               <span class="label">{{'DASHBOARD.ez_label' | translate}} </span>
               <span class="label-val">{{ item.ez }}</span>
             </ion-chip>
             <ion-chip class="content-chip">
-              <span class="label">{{'DASHBOARD.transmission_label' | translate}}</span>
-              <span class="label-val">{{ transmission[item.transmission] }}</span>
+              <span class="label"
+                >{{'DASHBOARD.transmission_label' | translate}}</span
+              >
+              <span class="label-val"
+                >{{ transmission[item.transmission] }}</span
+              >
             </ion-chip>
             <ion-chip class="content-chip">
-              <span class="label">{{'DASHBOARD.fuel_type_label' | translate}}</span>
-              <span class="label-val">{{ fueltype[item.fuelType] }}</span> 
+              <span class="label"
+                >{{'DASHBOARD.fuel_type_label' | translate}}</span
+              >
+              <span class="label-val">{{ fueltype[item.fuelType] }}</span>
             </ion-chip>
             <ion-chip class="content-chip">
-              <span class="label">{{'DASHBOARD.mileage_label' | translate}}</span>
-              <span class="label-val">{{ item.mileageInKm }} {{'DASHBOARD.kms_unit' | translate}}</span>
+              <span class="label"
+                >{{'DASHBOARD.mileage_label' | translate}}</span
+              >
+              <span class="label-val"
+                >{{ item.mileageInKm }} {{'DASHBOARD.kms_unit' |
+                translate}}</span
+              >
             </ion-chip>
           </ion-row>
         </ion-col>
       </ion-card-content>
     </ion-card>
   </ion-list>
-  
+
+  <!-- Dashboard loader -->
   <ion-list class="dashboard-content" *ngIf="!loaded && !cannotFindResults">
     <app-loading-cards></app-loading-cards>
   </ion-list>
 
+  <!-- Error page -->
   <div *ngIf="cannotFindResults" class="dashboard-content error-container">
     <app-error [errorMessage]="errorMessage"></app-error>
   </div>

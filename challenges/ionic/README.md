@@ -1,5 +1,49 @@
 # Ionic Challenge
 
+The goal of this application is to authenticate and view the available auctions for the logged in Buyer using corresponding APIs.
+
+## Basic implementation
+
+The application
+
+- Is an Angular Ionic application allowing the user to authenticate and view the available auctions for the logged in Buyer.
+- Authenticates and shows the relevant details provided by the corresponding in house testing APIs.
+- Handles all possible API's erros by showing relevant error messages.
+- Updates the auction details every 20 seconds for the logged in Buyer.
+- Retains the logged in credentials upon refresh and shows their current auction details.
+- Uses Ionic storage to store authentication.
+- Uses Behavior subjects to detect any change in the authentication state.
+- The application is available in TWO languages (Deutsch and English).
+- Is built to be responsive across multiple mobile and tablet devices.
+- Includes necessary test cases with nearly 70% coverage.
+
+## Project
+
+This project was generated with Ionic CLI version 6.20.8.
+
+## Installing dependencies
+Run `npm install` for downloads the package and it's dependencies into node modules. 
+## Development server
+
+Run `ionic serve` for a dev server. Navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ionic generate component component-name` to generate a new component. You can also use `ionic generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ionic build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+
+
+
+# Ionic Challenge
+
 Welcome to the CarOnSale Ionic Coding Challenge.
 
 To assess your skills and knowledge about the relevant technologies, we want you to build us a simple user interface for our backend service.

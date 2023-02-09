@@ -21,6 +21,7 @@ export class AppComponent {
       this.initialiseApp();
   }
 
+  /** Watch login and logout based on authentication status */
   initialiseApp() {
     this.authService.authenticationState.subscribe((state)=> {
       if(state) {

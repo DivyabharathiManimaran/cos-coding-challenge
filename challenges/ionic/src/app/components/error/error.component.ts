@@ -1,28 +1,32 @@
-import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from "@ngx-translate/core";
+import { Subscription } from "rxjs";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-error',
-  templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss'],
+  selector: "app-error",
+  templateUrl: "./error.component.html",
+  styleUrls: ["./error.component.scss"],
 })
-export class ErrorComponent implements OnInit {
-
+export class ErrorComponent implements OnInit, OnDestroy {
   @Input() errorMessage?: string;
-  error!: string;
-  somethinWentWrong='ERRORS.something_went_wrong';
+  somethinWentWrong = "ERRORS.something_went_wrong";
 
   msgSubscription!: Subscription;
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit() {
-      this.msgSubscription =  this.translateService.get(this.somethinWentWrong).subscribe(
-        value => {
-          this.error = value;
-        }
-      )
+    /** Fetch default error message if no error message is passed into the component */
+    if (!this.errorMessage) {
+      this.msgSubscription = this.translateService
+        .get(this.somethinWentWrong)
+        .subscribe((value) => {
+          this.errorMessage = value;
+        });
+    }
   }
 
+  ngOnDestroy() {
+    this.msgSubscription.unsubscribe();
+  }
 }

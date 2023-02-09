@@ -21,6 +21,7 @@ export class AuthenticationService {
     });
    }
 
+   /** Headers for URLs which dont need autherisation */
    getHttpOptions() {
     const myHttpOptions = {
       headers: new HttpHeaders({
@@ -29,6 +30,9 @@ export class AuthenticationService {
     };
     return myHttpOptions;
   }
+
+
+   /** Headers for URLs which need autherisation */
    getAuthorisedHttpOptions() {
     const myHttpOptions = {
       headers: new HttpHeaders({
@@ -40,6 +44,7 @@ export class AuthenticationService {
     return myHttpOptions;
   }
   
+  /** Login and set autherisation state */
   login(userId:string, authtokenVal: string) {
     this.logedInUserId = userId;
     this.authKey = authtokenVal;
@@ -62,6 +67,7 @@ export class AuthenticationService {
     return this.authenticationState.value;
   }
 
+  /** Authentication state verification */
   checkToken() {
     this.storage.get(TOKEN_KEY).then(res=> {
       if(res) {
